@@ -1,7 +1,11 @@
-import properties from "./../../properties.json";
 import Property from "../_components/Property";
+import { loadProperties } from "@/utils/requests";
 
-export default function Properties() {
+export default async function Properties() {
+
+  const properties = await loadProperties();
+  properties.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
   return (
     <section className="px-4 py-6">
       <div className="container-xl lg:container m-auto px-4 py-6">

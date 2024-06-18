@@ -1,8 +1,9 @@
 import Link from 'next/link';
-import properties from '../../properties.json';
 import Property from './Property';
+import { loadProperties } from '@/utils/requests';
 
-export default function RecentProperties() {
+export default async function RecentProperties() {
+    const properties = await loadProperties();
     const randomProperties = properties.sort(() => (Math.random() - Math.random())).slice(0, 3);
     return (
         <>

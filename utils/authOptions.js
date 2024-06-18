@@ -36,5 +36,8 @@ export const authOptions = {
             session.user.id = user._id.toString();
             return session;
         }
-    }
+    },
+    // pages: {
+    //     signIn: "/"
+    // }
 }

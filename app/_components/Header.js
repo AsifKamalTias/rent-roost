@@ -193,7 +193,7 @@ export default function Header() {
                       </Link>
                       <button
                         onClick={() => {
-                          signOut();
+                          signOut({ callbackUrl: '/' });
                           setProfileMenuOpen(false);
                         }}
                         className="block px-4 py-2 text-sm text-gray-700"

@@ -4,15 +4,29 @@ import Link from "next/link";
 import { FaGoogle } from "react-icons/fa";
 import logo from "../../public/logo-white.png";
 import defaultProfileImg from "../../public/images/profile.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const { data: session } = useSession();
+  const userProfileImg = session?.user?.image;
+
+  const [providers, setProviders] = useState(null);
 
   const pathName = usePathname();
+
+  useEffect(() => {
+    const setAuthProviders = async () => {
+      const response = await getProviders();
+      setProviders(response);
+    }
+
+    setAuthProviders();
+  }, [])
 
   return (
     <header>
@@ -61,26 +75,23 @@ export default function Header() {
                 <div className="flex space-x-2">
                   <Link
                     href="/"
-                    className={`${
-                      pathName === "/" ? "bg-black " : ""
-                    } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
+                    className={`${pathName === "/" ? "bg-black " : ""
+                      } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
                   >
                     Home
                   </Link>
                   <Link
                     href="/properties"
-                    className={`${
-                      pathName === "/properties" ? "bg-black " : ""
-                    } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
+                    className={`${pathName === "/properties" ? "bg-black " : ""
+                      } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
                   >
                     Properties
                   </Link>
-                  {isLoggedIn && (
+                  {session && (
                     <Link
                       href="/properties/create"
-                      className={`${
-                        pathName === "/properties/create" ? "bg-black " : ""
-                      } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
+                      className={`${pathName === "/properties/create" ? "bg-black " : ""
+                        } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
                     >
                       Add Property
                     </Link>
@@ -89,13 +100,17 @@ export default function Header() {
               </div>
             </div>
 
-            {!isLoggedIn ? (
+            {!session ? (
               <div className="hidden md:block md:ml-6">
                 <div className="flex items-center">
-                  <button className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2">
-                    <FaGoogle className="tex-white mr-2" />
-                    <span>Login or Register</span>
-                  </button>
+                  {
+                    providers && Object.values(providers).map((provider, i) =>
+                      <button key={i} onClick={() => { signIn(provider.id) }} className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2">
+                        <FaGoogle className="tex-white mr-2" />
+                        <span>Login or Register</span>
+                      </button>
+                    )
+                  }
                 </div>
               </div>
             ) : (
@@ -142,8 +157,10 @@ export default function Header() {
                       <span className="sr-only">Open user menu</span>
                       <Image
                         className="h-8 w-8 rounded-full"
-                        src={defaultProfileImg}
+                        src={userProfileImg || defaultProfileImg}
                         alt="Profile"
+                        width={40}
+                        height={40}
                       />
                     </button>
                   </div>
@@ -171,19 +188,20 @@ export default function Header() {
                         className="block px-4 py-2 text-sm text-gray-700"
                         role="menuitem"
                         tabIndex="-1"
-                        id="user-menu-item-2"
                       >
                         Saved Properties
                       </Link>
-                      <Link
-                        href="/sign-out"
+                      <button
+                        onClick={() => {
+                          signOut();
+                          setProfileMenuOpen(false);
+                        }}
                         className="block px-4 py-2 text-sm text-gray-700"
                         role="menuitem"
                         tabIndex="-1"
-                        id="user-menu-item-2"
                       >
                         Sign Out
-                      </Link>
+                      </button>
                     </div>
                   )}
                 </div>
@@ -197,36 +215,35 @@ export default function Header() {
             <div className="space-y-1 px-2 pb-3 pt-2">
               <Link
                 href="/"
-                className={`${
-                  pathName == "/" ? "bg-black " : ""
-                }text-white block rounded-md px-3 py-2 text-base font-medium`}
+                className={`${pathName == "/" ? "bg-black " : ""
+                  }text-white block rounded-md px-3 py-2 text-base font-medium`}
               >
                 Home
               </Link>
               <Link
                 href="/properties"
-                className={`${
-                  pathName == "/properties" ? "bg-black " : ""
-                }text-white block rounded-md px-3 py-2 text-base font-medium`}
+                className={`${pathName == "/properties" ? "bg-black " : ""
+                  }text-white block rounded-md px-3 py-2 text-base font-medium`}
               >
                 Properties
               </Link>
-              {isLoggedIn && (
+              {session && (
                 <Link
                   href="/properties/create"
-                  className={`${
-                    pathName == "/properties/create" ? "bg-black " : ""
-                  }text-white block rounded-md px-3 py-2 text-base font-medium`}
+                  className={`${pathName == "/properties/create" ? "bg-black " : ""
+                    }text-white block rounded-md px-3 py-2 text-base font-medium`}
                 >
                   Add Property
                 </Link>
               )}
 
-              {!isLoggedIn && (
-                <button className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 my-4">
-                  <FaGoogle className="tex-white mr-2" />
-                  <span>Login or Register</span>
-                </button>
+              {!session && (
+                providers && Object.values(providers).map((provider, i) =>
+                  <button key={i} onClick={() => { signIn(provider.id) }} className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 my-4">
+                    <FaGoogle className="tex-white mr-2" />
+                    <span>Login or Register</span>
+                  </button>
+                )
               )}
             </div>
           </div>

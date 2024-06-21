@@ -64,7 +64,7 @@ export default function Header() {
             </div>
 
             <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
-              <Link className="flex flex-shrink-0 items-center" href="/">
+              <Link className="flex flex-shrink-0 items-center" href="/" onClick={() => { setProfileMenuOpen(false); setMobileMenuOpen(false); }}>
                 <Image className="h-10 w-auto" src={logo} alt="PropertyPulse" />
 
                 <span className="hidden md:block text-white text-2xl font-bold ml-2">
@@ -84,6 +84,7 @@ export default function Header() {
                     href="/properties"
                     className={`${pathName === "/properties" ? "bg-black " : ""
                       } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
+                    onClick={() => { setProfileMenuOpen(false); setMobileMenuOpen(false); }}
                   >
                     Properties
                   </Link>
@@ -92,6 +93,7 @@ export default function Header() {
                       href="/properties/create"
                       className={`${pathName === "/properties/create" ? "bg-black " : ""
                         } text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2`}
+                      onClick={() => { setProfileMenuOpen(false); setMobileMenuOpen(false); }}
                     >
                       Add Property
                     </Link>
@@ -119,6 +121,7 @@ export default function Header() {
                   <button
                     type="button"
                     className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                    onClick={() => { setProfileMenuOpen(false); setMobileMenuOpen(false); }}
                   >
                     <span className="absolute -inset-1.5"></span>
                     <span className="sr-only">View notifications</span>
@@ -180,6 +183,7 @@ export default function Header() {
                         role="menuitem"
                         tabIndex="-1"
                         id="user-menu-item-0"
+                        onClick={() => { setProfileMenuOpen(false); setMobileMenuOpen(false); }}
                       >
                         Your Profile
                       </Link>
@@ -188,6 +192,7 @@ export default function Header() {
                         className="block px-4 py-2 text-sm text-gray-700"
                         role="menuitem"
                         tabIndex="-1"
+                        onClick={() => { setProfileMenuOpen(false); setMobileMenuOpen(false); }}
                       >
                         Saved Properties
                       </Link>
@@ -195,6 +200,7 @@ export default function Header() {
                         onClick={() => {
                           signOut({ callbackUrl: '/' });
                           setProfileMenuOpen(false);
+                          setMobileMenuOpen(false);
                         }}
                         className="block px-4 py-2 text-sm text-gray-700"
                         role="menuitem"
@@ -217,6 +223,7 @@ export default function Header() {
                 href="/"
                 className={`${pathName == "/" ? "bg-black " : ""
                   }text-white block rounded-md px-3 py-2 text-base font-medium`}
+                onClick={() => { setProfileMenuOpen(false); setMobileMenuOpen(false); }}
               >
                 Home
               </Link>
@@ -224,6 +231,7 @@ export default function Header() {
                 href="/properties"
                 className={`${pathName == "/properties" ? "bg-black " : ""
                   }text-white block rounded-md px-3 py-2 text-base font-medium`}
+                onClick={() => { setProfileMenuOpen(false); setMobileMenuOpen(false); }}
               >
                 Properties
               </Link>
@@ -232,6 +240,7 @@ export default function Header() {
                   href="/properties/create"
                   className={`${pathName == "/properties/create" ? "bg-black " : ""
                     }text-white block rounded-md px-3 py-2 text-base font-medium`}
+                  onClick={() => { setProfileMenuOpen(false); setMobileMenuOpen(false); }}
                 >
                   Add Property
                 </Link>

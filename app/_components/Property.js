@@ -18,11 +18,12 @@ export default function Property({ property }) {
     return (
         <div className="rounded-xl shadow-md relative">
             <Image
-                src={`/images/properties/${property.images[0]}`}
+                src={property.images[0]}
                 alt={property.name}
                 width={0}
                 height={0}
                 sizes="100vw"
+                priority={true}
                 className="w-full h-auto rounded-t-xl"
             />
             <div className="p-4">

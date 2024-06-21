@@ -13,6 +13,9 @@ export const GET = async (request, { params }) => {
         return new Response(JSON.stringify(property), { status: 200 });
     } catch (e) {
         console.error(e);
-        return new Response("Something went wrong.", { status: 500 });
+        return new Response({
+            status: "fail",
+            message: "Something went wrong."
+        }, { status: 500 });
     }
 }

@@ -1,11 +1,43 @@
+"use client";
+import { useState, useEffect } from 'react';
 import Property from "../_components/Property";
-import { loadProperties } from "@/utils/requests";
 import PropertySearch from "../_components/PropertySearch";
+import Pagination from '../_components/Pagination';
 
-export default async function Properties() {
+export default function Properties() {
+  const [properties, setProperties] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(6);
+  const [totalItems, setTotalItems] = useState(0);
 
-  const properties = await loadProperties();
-  properties.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+  useEffect(() => {
+    const fetchProperties = async () => {
+      try {
+        const res = await fetch(
+          `/api/properties?page=${page}&pageSize=${pageSize}`
+        );
+
+        if (!res.ok) {
+          throw new Error('Failed to fetch data');
+        }
+
+        const data = await res.json();
+        setProperties(data.properties);
+        setTotalItems(data.total);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProperties();
+  }, [page, pageSize]);
+
+  const handlePageChange = (newPage) => {
+    setPage(newPage);
+  };
 
   return (
     <>
@@ -27,6 +59,12 @@ export default async function Properties() {
               </div>
             )
           }
+          <Pagination
+            page={page}
+            pageSize={pageSize}
+            totalItems={totalItems}
+            onPageChange={handlePageChange}
+          />
         </div>
       </section>
     </>

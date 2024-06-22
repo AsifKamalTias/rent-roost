@@ -3,8 +3,8 @@ import Property from './Property';
 import { loadProperties } from '@/utils/requests';
 
 export default async function RecentProperties() {
-    const properties = await loadProperties();
-    const randomProperties = properties.sort(() => (Math.random() - Math.random())).slice(0, 3);
+    const data = await loadProperties();
+    const randomProperties = data.properties.sort(() => (Math.random() - Math.random())).slice(0, 3);
     return (
         <>
             <section className="px-4 py-6">
@@ -13,7 +13,7 @@ export default async function RecentProperties() {
                         Recent Properties
                     </h2>
                     {
-                        properties.length === 0 ? (
+                        data.properties.length === 0 ? (
                             <p className="text-center mt-5">No properties found.</p>
                         ) : (
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

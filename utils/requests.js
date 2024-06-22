@@ -5,7 +5,7 @@ async function loadProperties() {
         if (!endpoint) {
             return [];
         }
-        const response = await fetch(`${endpoint}/properties`, { cache: "no-store" });
+        const response = await fetch(`${endpoint}/properties`);
         if (!response.ok) {
             throw new Error("Something went wrong.");
         }
@@ -22,7 +22,7 @@ async function loadFeaturedProperties() {
         if (!endpoint) {
             return [];
         }
-        const response = await fetch(`${endpoint}/properties/featured`, { cache: "no-store" });
+        const response = await fetch(`${endpoint}/properties/featured`);
         if (!response.ok) {
             throw new Error("Something went wrong.");
         }

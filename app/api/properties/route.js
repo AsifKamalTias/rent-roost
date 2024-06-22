@@ -1,6 +1,6 @@
 import connectDB from "@/config/database";
 import Property from "@/models/Property";
-import sessionUser from "@/utils/getSessionUser";
+import sessionUser from "@/utils/sessionUser";
 import uploadImage from "@/utils/uploadImage";
 
 export const GET = async (request) => {

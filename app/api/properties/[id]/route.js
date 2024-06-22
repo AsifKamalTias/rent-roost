@@ -1,6 +1,6 @@
 import connectDB from "@/config/database";
 import Property from "@/models/Property";
-import sessionUser from "@/utils/getSessionUser";
+import sessionUser from "@/utils/sessionUser";
 
 export const GET = async (request, { params }) => {
     try {
@@ -35,7 +35,7 @@ export const PUT = async (request, { params }) => {
         const formData = await request.formData();
         const amenities = formData.getAll('amenities');
 
-    
+
         const existingProperty = await Property.findById(id);
 
         if (!existingProperty) {

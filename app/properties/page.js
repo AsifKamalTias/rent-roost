@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Property from "../_components/Property";
 import PropertySearch from "../_components/PropertySearch";
 import Pagination from '../_components/Pagination';
+import Spinner from '../_components/Spinner';
 
 export default function Properties() {
   const [properties, setProperties] = useState([]);
@@ -48,8 +49,9 @@ export default function Properties() {
       </section>
       <section className="px-4 py-6">
         <div className="container-xl lg:container m-auto px-4 py-6">
+          {loading && <Spinner loading={loading} />}
           {
-            properties.length === 0 ? (
+            !loading && properties.length === 0 ? (
               <p className="text-center mt-5">No properties found.</p>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

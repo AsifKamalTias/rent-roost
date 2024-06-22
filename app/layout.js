@@ -1,3 +1,4 @@
+import { GlobalProvider } from "@/contexts/GlobalContext";
 import AuthProvider from "./_components/AuthProvider";
 import Footer from "./_components/Footer";
 import Header from "./_components/Header";
@@ -13,15 +14,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <AuthProvider>
-      <html lang="en">
-        <body>
-          <ToastContainer />
-          <Header />
-          <main className="min-h-[80vh]">{children}</main>
-          <Footer />
-        </body>
-      </html>
-    </AuthProvider>
+    <GlobalProvider>
+      <AuthProvider>
+        <html lang="en">
+          <body>
+            <ToastContainer />
+            <Header />
+            <main className="min-h-[80vh]">{children}</main>
+            <Footer />
+          </body>
+        </html>
+      </AuthProvider>
+    </GlobalProvider>
   );
 }

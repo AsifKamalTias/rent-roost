@@ -71,6 +71,10 @@ export default function Profile() {
                                     className="h-32 w-32 md:h-48 md:w-48 rounded-full mx-auto md:mx-0"
                                     src={session?.user?.image || defaultProfileImg}
                                     alt="User"
+                                    width={0}
+                                    height={0}
+                                    sizes="1000vw"
+                                    priority={true}
                                 />
                             </div>
                             <h2 className="text-2xl mb-4"><span className="font-bold block">Name: </span> {session?.user?.name}</h2>

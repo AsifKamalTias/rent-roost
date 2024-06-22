@@ -127,7 +127,7 @@ const Edit = () => {
     };
 
     return (
-        <section className='bg-blue-50'>
+        <section className='bg-teal-50'>
             <div className='container m-auto max-w-2xl py-24'>
                 <div className='bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0'>
                     {
@@ -191,7 +191,7 @@ const Edit = () => {
                                     ></textarea>
                                 </div>
 
-                                <div className='mb-4 bg-blue-50 p-4'>
+                                <div className='mb-4 bg-teal-50 p-4'>
                                     <label className='block text-gray-700 font-bold mb-2'>Location</label>
                                     <input
                                         type='text'
@@ -479,7 +479,7 @@ const Edit = () => {
                                     </div>
                                 </div>
 
-                                <div className='mb-4 bg-blue-50 p-4'>
+                                <div className='mb-4 bg-teal-50 p-4'>
                                     <label className='block text-gray-700 font-bold mb-2'>
                                         Rates (Leave blank if not applicable)
                                     </label>
@@ -581,7 +581,7 @@ const Edit = () => {
 
                                 <div>
                                     <button
-                                        className='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline'
+                                        className='bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline'
                                         type='submit'
                                     >
                                         Update Property

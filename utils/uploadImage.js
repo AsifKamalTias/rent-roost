@@ -10,7 +10,7 @@ const uploadImage = async (image) => {
     const result = await cloudinary.uploader.upload(
         `data:image/png;base64,${imageBase64}`,
         {
-            folder: 'propertypulse',
+            folder: 'rent-roost',
         }
     );
 

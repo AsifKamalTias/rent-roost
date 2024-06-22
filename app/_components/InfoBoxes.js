@@ -18,9 +18,9 @@ export default function InfoBoxes() {
           </InfoBox>
           <InfoBox
             heading="For Property Owners"
-            backgroundColor="bg-blue-100"
+            backgroundColor="bg-teal-100"
             buttonInfo={{
-              backgroundColor: "bg-blue-500",
+              backgroundColor: "bg-teal-500",
               text: "Add Property",
               link: "/properties/create",
             }}

@@ -1,6 +1,10 @@
 export { default } from "next-auth/middleware";
 export const config = {
     matcher: [
-        '/properties/create'
+        '/profile',
+        '/properties/create',
+        '/properties/:id/edit',
+        '/properties/bookmarks',
+        '/messages',
     ]
 }

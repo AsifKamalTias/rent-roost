@@ -9,7 +9,7 @@ import 'react-photoswipe/lib/photoswipe.css';
 import 'photoswipe/dist/photoswipe.css'
 
 export const metadata = {
-  title: "Property Pulse | Find The Perfect Rental",
+  title: "Rent Roost | Find The Perfect Rental",
   description: "Find your dream rental property.",
   keywords: "rental, property",
 };

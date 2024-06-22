@@ -8,7 +8,7 @@ const override = {
 export default function Spinner({ loading }) {
     return (
         <ClipLoader
-            color="#3b82F6"
+            color="#0f766e"
             loading={loading}
             cssOverride={override}
             size={150}

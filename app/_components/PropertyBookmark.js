@@ -81,7 +81,7 @@ const PropertyBookmark = ({ property }) => {
     ) : (
         <button
             onClick={handleClick}
-            className='bg-blue-500 hover:bg-blue-600 text-white font-bold w-full py-2 px-4 rounded-full flex items-center justify-center'
+            className='bg-teal-500 hover:bg-teal-600 text-white font-bold w-full py-2 px-4 rounded-full flex items-center justify-center'
         >
             <FaRegBookmark className='mr-2' /> Bookmark Property
         </button>

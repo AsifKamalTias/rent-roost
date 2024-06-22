@@ -31,7 +31,7 @@ export default function Property({ property }) {
                     <div className="text-gray-600">{property.type}</div>
                     <h3 className="text-xl font-bold">{property.name}</h3>
                 </div>
-                <h3 className="absolute top-[10px] right-[10px] bg-white px-4 py-2 rounded-lg text-blue-500 font-bold text-right md:text-center lg:text-right">
+                <h3 className="absolute top-[10px] right-[10px] bg-white px-4 py-2 rounded-lg text-teal-500 font-bold text-right md:text-center lg:text-right">
                     {getRate()}
                 </h3>
 
@@ -85,7 +85,7 @@ export default function Property({ property }) {
                     </div>
                     <Link
                         href={`/properties/${property._id}`}
-                        className="h-[36px] bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-center text-sm"
+                        className="h-[36px] bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded-lg text-center text-sm"
                     >
                         Details
                     </Link>

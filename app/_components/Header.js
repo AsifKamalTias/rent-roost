@@ -32,7 +32,7 @@ export default function Header() {
 
   return (
     <header>
-      <nav className="bg-blue-700 border-b border-blue-500">
+      <nav className="bg-teal-700 border-b border-teal-500">
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-20 items-center justify-between">
             <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
@@ -67,10 +67,10 @@ export default function Header() {
 
             <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
               <Link className="flex flex-shrink-0 items-center" href="/" onClick={() => { setProfileMenuOpen(false); setMobileMenuOpen(false); }}>
-                <Image className="h-10 w-auto" src={logo} alt="PropertyPulse" />
+                <Image className="h-10 w-auto" src={logo} alt="Rent Roost" />
 
                 <span className="hidden md:block text-white text-2xl font-bold ml-2">
-                  PropertyPulse
+                  Rent Roost
                 </span>
               </Link>
               <div className="hidden md:ml-6 md:block">
@@ -127,7 +127,7 @@ export default function Header() {
                   >
                     <span className="absolute -inset-1.5"></span>
                     <span className="sr-only">View messages</span>
-                    <CiMail className="text-3xl" />
+                    <CiMail className="text-2xl" />
                   </button>
                   <UnreadMessageCount session={session} />
                 </Link>

@@ -42,7 +42,7 @@ const Search = () => {
 
     return (
         <>
-            <section className='bg-blue-700 py-4'>
+            <section className='bg-teal-700 py-4'>
                 <div className='max-w-7xl mx-auto px-4 flex flex-col items-start sm:px-6 lg:px-8'>
                     <PropertySearch l={location} t={propertyType} />
                 </div>
@@ -54,7 +54,7 @@ const Search = () => {
                     <div className='container-xl lg:container m-auto px-4 py-6'>
                         <Link
                             href='/properties'
-                            className='flex items-center text-blue-500 hover:underline mb-3'
+                            className='flex items-center text-teal-500 hover:underline mb-3'
                         >
                             <FaArrowLeft className='mr-2 mb-1' /> Back To Properties
                         </Link>

@@ -188,13 +188,13 @@ export default function Header() {
                         Your Profile
                       </Link>
                       <Link
-                        href="properties/saved"
+                        href="/properties/bookmarks"
                         className="block px-4 py-2 text-sm text-gray-700"
                         role="menuitem"
                         tabIndex="-1"
                         onClick={() => { setProfileMenuOpen(false); setMobileMenuOpen(false); }}
                       >
-                        Saved Properties
+                        Bookmarks
                       </Link>
                       <button
                         onClick={() => {

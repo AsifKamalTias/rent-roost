@@ -5,7 +5,24 @@ async function loadProperties() {
         if (!endpoint) {
             return [];
         }
-        const response = await fetch(`${endpoint}/properties`);
+        const response = await fetch(`${endpoint}/properties`, { cache: "no-store" });
+        if (!response.ok) {
+            throw new Error("Something went wrong.");
+        }
+
+        return response.json();
+    } catch (error) {
+        console.error(error);
+        return [];
+    }
+}
+
+async function loadFeaturedProperties() {
+    try {
+        if (!endpoint) {
+            return [];
+        }
+        const response = await fetch(`${endpoint}/properties/featured`, { cache: "no-store" });
         if (!response.ok) {
             throw new Error("Something went wrong.");
         }
@@ -34,4 +51,4 @@ async function loadProperty(id) {
     }
 }
 
-export { loadProperties, loadProperty };
+export { loadProperties, loadFeaturedProperties, loadProperty };

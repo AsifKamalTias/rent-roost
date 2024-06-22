@@ -4,7 +4,10 @@ import { loadProperties } from '@/utils/requests';
 
 export default async function RecentProperties() {
     const data = await loadProperties();
-    const randomProperties = data.properties.sort(() => (Math.random() - Math.random())).slice(0, 3);
+    let randomProperties = [];
+    if (data?.properties && data?.properties?.length > 0) {
+        randomProperties = data.properties.sort(() => (Math.random() - Math.random())).slice(0, 3);
+    }
     return (
         <>
             <section className="px-4 py-6">

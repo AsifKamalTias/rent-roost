@@ -3,6 +3,8 @@ import Property from "@/models/Property";
 import sessionUser from "@/utils/sessionUser";
 import uploadImage from "@/utils/uploadImage";
 
+export const dynamic = 'force-dynamic';
+
 export const GET = async (request) => {
     try {
         await connectDB();

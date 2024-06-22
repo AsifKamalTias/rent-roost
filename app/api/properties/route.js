@@ -6,13 +6,13 @@ import uploadImage from "@/utils/uploadImage";
 export const GET = async (request) => {
     try {
         await connectDB();
-        const properties = await Property.find({});
+        const properties = await Property.find({}).sort({ updatedAt: -1 });
         return new Response(JSON.stringify(properties), { status: 200 });
     } catch (e) {
         console.error(e);
         return new Response({
             status: "fail",
-            message: "Something went wrong."
+            message: "Something went wrong"
         }, { status: 500 });
     }
 }
@@ -75,7 +75,7 @@ export const POST = async (request) => {
         console.error(e);
         return new Response({
             status: "fail",
-            message: "Something went wrong."
+            message: "Something went wrong"
         }, { status: 500 });
     }
 }

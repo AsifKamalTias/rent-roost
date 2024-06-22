@@ -2,6 +2,8 @@ import AuthProvider from "./_components/AuthProvider";
 import Footer from "./_components/Footer";
 import Header from "./_components/Header";
 import "./globals.css";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata = {
   title: "Property Pulse | Find The Perfect Rental",
@@ -14,6 +16,7 @@ export default function RootLayout({ children }) {
     <AuthProvider>
       <html lang="en">
         <body>
+          <ToastContainer />
           <Header />
           <main>{children}</main>
           <Footer />

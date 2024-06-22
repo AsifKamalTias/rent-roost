@@ -14,7 +14,7 @@ export default async function RecentProperties() {
                     </h2>
                     {
                         properties.length === 0 ? (
-                            <p>No properties found.</p>
+                            <p className="text-center mt-5">No properties found.</p>
                         ) : (
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                                 {randomProperties.map((property) => {

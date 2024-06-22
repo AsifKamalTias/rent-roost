@@ -119,7 +119,7 @@ export default function AddProperty() {
                         </div>
                         <div className='mb-4'>
                             <label className='block text-gray-700 font-bold mb-2'>
-                                Listing Name
+                                Name
                             </label>
                             <input
                                 type='text'

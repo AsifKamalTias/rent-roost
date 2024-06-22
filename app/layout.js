@@ -5,6 +5,8 @@ import Header from "./_components/Header";
 import "./globals.css";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-photoswipe/lib/photoswipe.css';
+import 'photoswipe/dist/photoswipe.css'
 
 export const metadata = {
   title: "Property Pulse | Find The Perfect Rental",

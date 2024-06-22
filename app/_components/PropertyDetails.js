@@ -1,4 +1,5 @@
 import { FaMapMarker, FaTimes, FaBed, FaBath, FaRulerCombined, FaCheck } from "react-icons/fa";
+import PropertyImages from "./PropertyImages";
 
 export default function PropertyDetails({ property }) {
     return (
@@ -102,6 +103,7 @@ export default function PropertyDetails({ property }) {
                     }
                 </ul>
             </div>
+            <PropertyImages images={property.images} />
         </div>
     );
 }
